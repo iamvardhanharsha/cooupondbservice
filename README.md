@@ -1,3 +1,5 @@
+Coupon db service will intract with coupon table 
+
 CREATE TABLE `coupon`.`coupon` (
   `client` VARCHAR(45) NOT NULL,
   `couponcode` VARCHAR(45) NULL,
@@ -8,9 +10,11 @@ CREATE TABLE `coupon`.`coupon` (
 insert into coupon values ('phonepay','phonepay20','2022-09-06','2022-09-12');
 
 
+Get request to feach the coupon information
 
 http://localhost:8892/coupondb/getcoupon/phonepay
 
+Response 
 
 {
     "client": "phonepay",
