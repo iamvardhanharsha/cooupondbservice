@@ -8,4 +8,6 @@ public interface CouponService {
 
 	Optional<CouponEntity> getCoupon(String client);
 
+	CouponEntity addCoupon(CouponEntity couponEntity);
+
 }

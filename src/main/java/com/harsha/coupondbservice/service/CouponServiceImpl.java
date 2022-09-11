@@ -20,4 +20,10 @@ public class CouponServiceImpl implements CouponService {
 
 	}
 
+	@Override
+	public CouponEntity addCoupon(CouponEntity couponEntity) {
+
+		return couponRepository.save(couponEntity);
+	}
+
 }
