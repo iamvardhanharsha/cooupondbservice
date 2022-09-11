@@ -22,3 +22,26 @@ Response
     "startDate": "2022-09-06",
     "endDate": "2022-09-12"
 }
+
+
+Post request to add/insert the coupon information
+
+http://localhost:8892/coupondb/addcoupon
+
+Request:
+
+{
+"client":"Paypal",
+"couponCode":"Paypal",
+"startDate":"2022-09-11",
+"endDate":"2022-09-23"
+}
+
+
+response:
+{
+"client":"Paypal",
+"couponCode":"Paypal",
+"startDate":"2022-09-11",
+"endDate":"2022-09-23"
+}
