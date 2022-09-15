@@ -4,6 +4,8 @@ import java.util.Optional;
 
 import javax.validation.constraints.Pattern;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,12 +29,16 @@ import com.harsha.coupondbservice.service.CouponService;
 public class CouponContaoller {
 	@Autowired
 	CouponService couponService;
+	private static final Logger LOGGER = LoggerFactory.getLogger(CouponContaoller.class);
 
 	@GetMapping("/getcoupon/{client}")
-	public ResponseEntity<Optional<CouponEntity>> hai(
+	public ResponseEntity<Optional<CouponEntity>> getCoupon(
 			@PathVariable(name = "client") @Pattern(regexp = "^[a-zA-Z]*$", message = "") String client,
 			@RequestHeader(name = "AppToken") String appToken) throws InterruptedException {
+		LOGGER.error("getCoupon method started  client: {}", client);
+		LOGGER.info("getCoupon method   AppToken: {}", appToken);
 
+		LOGGER.debug("00");
 		Optional<CouponEntity> couponEntity = couponService.getCoupon(client);
 
 		Thread.sleep(200);
