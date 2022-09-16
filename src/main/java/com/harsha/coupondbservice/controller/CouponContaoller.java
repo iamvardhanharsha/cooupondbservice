@@ -35,6 +35,7 @@ public class CouponContaoller {
 	public ResponseEntity<Optional<CouponEntity>> getCoupon(
 			@PathVariable(name = "client") @Pattern(regexp = "^[a-zA-Z]*$", message = "") String client,
 			@RequestHeader(name = "AppToken") String appToken) throws InterruptedException {
+
 		LOGGER.error("getCoupon method started  client: {}", client);
 		LOGGER.info("getCoupon method   AppToken: {}", appToken);
 
@@ -47,6 +48,7 @@ public class CouponContaoller {
 		hearder.add("AppToken", appToken);
 		ResponseEntity<Optional<CouponEntity>> response = new ResponseEntity<Optional<CouponEntity>>(couponEntity,
 				hearder, HttpStatus.ACCEPTED);
+
 		return response;
 	}
 
