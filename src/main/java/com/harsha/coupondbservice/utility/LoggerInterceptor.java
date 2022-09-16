@@ -32,7 +32,5 @@ public class LoggerInterceptor implements HandlerInterceptor {
 		LOGGER.info("befrore clear  token to MDC   App token {}", MDC.get("apptoken"));
 		MDC.clear();
 
-		LOGGER.info("after clear  token to MDC   App token {}", MDC.get("apptoken"));
-
 	}
 }
