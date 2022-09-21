@@ -21,6 +21,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.harsha.coupondbservice.bean.CouponEntity;
 import com.harsha.coupondbservice.service.CouponService;
 
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
+
 @RestController
 @RequestMapping("/coupondb")
 @Validated
@@ -46,6 +50,13 @@ public class CouponContaoller {
 	}
 
 	@PostMapping("/addcoupon")
+	@ApiOperation(value = "addnewCoupon")
+	@ApiResponses(value = { @ApiResponse(code = 500, message = "Server error"),
+			@ApiResponse(code = 404, message = "Service not found"),
+			@ApiResponse(code = 200, message = "Successful retrieval", response = CouponEntity.class, responseContainer = "List")
+
+	})
+
 	public ResponseEntity<CouponEntity> addCoupon(@RequestBody CouponEntity couponEntity,
 			@RequestHeader(name = "AppToken") String appToken) {
 
