@@ -26,4 +26,14 @@ public class CouponServiceImpl implements CouponService {
 		return couponRepository.save(couponEntity);
 	}
 
+	public String coupon(String client) {
+		if (client == null || "".equals(client)) {
+			throw new NullPointerException();
+		} else if ("JIO".equals(client)) {
+			return "JIO20";
+		} else {
+			return "ALL25";
+		}
+	}
+
 }
