@@ -31,20 +31,26 @@ import io.swagger.annotations.ApiResponses;
 public class CouponContaoller {
 	@Autowired
 	CouponService couponService;
+	CouponEntity couponEntity;
 
 	@GetMapping("/getcoupon/{client}")
-	public ResponseEntity<Optional<CouponEntity>> getCoupon(
+	public ResponseEntity<CouponEntity> getCoupon(
 			@PathVariable(name = "client") @Pattern(regexp = "^[a-zA-Z]*$", message = "") String client,
 			@RequestHeader(name = "AppToken") String appToken) throws InterruptedException {
 
-		Optional<CouponEntity> couponEntity = couponService.getCoupon(client);
+		Optional<CouponEntity> couponEntityresponse = couponService.getCoupon(client);
 
-		Thread.sleep(200);
+		System.out.println(couponEntityresponse.toString());
 
 		MultiValueMap<String, String> hearder = new LinkedMultiValueMap<>();
 		hearder.add("AppToken", appToken);
-		ResponseEntity<Optional<CouponEntity>> response = new ResponseEntity<Optional<CouponEntity>>(couponEntity,
-				hearder, HttpStatus.ACCEPTED);
+		ResponseEntity<CouponEntity> response;
+		if (couponEntityresponse.isEmpty()) {
+			response = new ResponseEntity<CouponEntity>(couponEntity, hearder, HttpStatus.BAD_REQUEST);
+		} else {
+			couponEntity = couponEntityresponse.get();
+			response = new ResponseEntity<CouponEntity>(couponEntity, hearder, HttpStatus.OK);
+		}
 
 		return response;
 	}
