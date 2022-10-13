@@ -1,11 +1,17 @@
 package com.harsha.coupondbservice.bean;
 
+import java.io.Serializable;
+
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
 @Component
 @Scope("prototype")
-public class ErrorResponse {
+@JsonInclude(content = Include.NON_NULL)
+public class ErrorResponse implements Serializable {
 	private String cause;
 	private String value;
 

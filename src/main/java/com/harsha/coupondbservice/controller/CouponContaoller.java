@@ -2,6 +2,7 @@ package com.harsha.coupondbservice.controller;
 
 import java.util.Optional;
 
+import javax.validation.Valid;
 import javax.validation.constraints.Pattern;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,7 +64,7 @@ public class CouponContaoller {
 
 	})
 
-	public ResponseEntity<CouponEntity> addCoupon(@RequestBody CouponEntity couponEntity,
+	public ResponseEntity<CouponEntity> addCoupon(@RequestBody @Valid CouponEntity couponEntity,
 			@RequestHeader(name = "AppToken") String appToken) {
 
 		CouponEntity couponEntityresult = couponService.addCoupon(couponEntity);

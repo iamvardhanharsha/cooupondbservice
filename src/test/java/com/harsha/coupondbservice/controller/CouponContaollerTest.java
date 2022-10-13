@@ -2,6 +2,8 @@ package com.harsha.coupondbservice.controller;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 
 import java.sql.Date;
 import java.util.Optional;
@@ -55,6 +57,8 @@ class CouponContaollerTest {
 		Assertions.assertNotNull(response);
 		Assertions.assertEquals(HttpStatus.OK, response.getStatusCode());
 		Assertions.assertNotNull(response.getBody());
+
+		verify(couponService, times(1)).getCoupon(any());
 
 	}
 
